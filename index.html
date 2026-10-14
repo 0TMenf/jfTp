@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>机房偷玩FO 下载站</title>
+    <link rel="icon" href="Pinkoc.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Candara, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Cascadia Code';
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2a4d69, #4b86b4);
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+            animation: bodyFadeIn 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+
+        @keyframes bodyFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.98);
+                backdrop-filter: blur(4px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                backdrop-filter: blur(0);
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: containerGlide 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes containerGlide {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 64px;
+            height: 64px;
+            margin-right: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.25s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ff0008, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin-left: 0;
+        }
+        
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            backdrop-filter: blur(4px);
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 0;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+            padding-right: 20px;
+        }
+        
+        .hero-text h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #1a1a2e;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #ffb6ba, #ffe0d4);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 260px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.3s;
+        }
+        .hero-image img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 35px rgba(0,0,0,0.5);
+        }
+        
+        .features {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(30, 30, 46, 0.7);
+            border-radius: 24px;
+            padding: 30px 20px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
+            animation: cardPop 0.5s ease-out backwards;
+        }
+        
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes cardPop {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            background: rgba(45, 45, 70, 0.85);
+            border-color: rgba(255, 200, 200, 0.4);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .extra-space {
+            height: 20px;
+        }
+
+        @media (max-width: 720px) {
+            .hero-text h2 { font-size: 2.2rem; }
+            .btn { padding: 10px 20px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <!--<div class="logo">
+            <img src="https://youke1.picui.cn/s1/2025/09/25/68d54a259af00.png" alt="PinTeam Logo">
+            <h1>Pinkoc</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active"></i> 首页</a></li>
+                <li><a href="https://91dw.pinkoc.top"></i> 资源</a></li>
+                <li><a href="server.html"></i> 服务器</a></li>
+                <li><a href="114.html"></i> 更多</a></li>
+            </ul>
+        </nav>
+    </header>-->
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>欢迎来到 机房偷玩FO 下载站</h2>
+            <p>嘘🤫想在机房玩MC🤔不想忍受"电竞"帧率?🤔</p>
+            <p>基于FO整合包二次制作的黑客级整合包😱帧率翻4倍😎</p>
+            <div class="btn-group">
+                <a href="verlist.html" class="btn"></i> 查看页面</a>
+                <!-- <a href="https://qm.qq.com/q/xbsKUer1ks" class="btn"></i> 黑客成员</a> -->
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="shitshitshit.png" alt="机房偷玩">
+        </div>
+    </section>
+<script>
+    console.log("666渐变活了");
+</script>
+
+</body>
+</html>

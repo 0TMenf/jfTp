@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Minecraft 版本导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1e2a2e 0%, #0f1a1f 100%);
+            font-family: "Source Han Sans", "Noto Sans CJK SC", "思源黑体", "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        /* 圆角正方形主容器 */
+        .version-hub {
+            background: rgba(30, 35, 40, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.8rem;
+            width: 100%;
+            max-width: 1200px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 直角长方形按钮网格 */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 115px));
+            justify-content: center;
+            gap: 1rem 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 版本按钮样式：直角长方形，硬朗风格 */
+        .version-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: #11171c;
+            border: 1px solid #2e3a42;
+            padding: 12px 6px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: #f0f3f8;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            letter-spacing: 0.5px;
+            border-radius: 0px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            background-image: linear-gradient(to bottom, #1f2a30, #0f171c);
+            min-width: 88px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .version-btn:hover {
+            background: #2c3e2f;
+            border-color: #ffb347;
+            color: #fff2db;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+            background-image: linear-gradient(to bottom, #3c5e3f, #1f3a24);
+        }
+
+        .version-btn:active {
+            transform: translateY(2px);
+            transition: 0.05s linear;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 返回主页面按钮区域 */
+        .back-home-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: #2a2f35;
+            border: 1px solid #ffb347;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: inherit;
+            color: #ffdfb3;
+            transition: all 0.2s ease;
+            border-radius: 0px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            background-image: linear-gradient(to bottom, #343e44, #1e262c);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-home-btn:hover {
+            background: #3e4a2f;
+            border-color: #ffc857;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            background-image: linear-gradient(to bottom, #596f3a, #2a3a22);
+        }
+
+        .back-home-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 680px) {
+            .version-hub {
+                padding: 1.5rem 1rem;
+                border-radius: 36px;
+            }
+            .button-grid {
+                gap: 0.8rem;
+                grid-template-columns: repeat(auto-fill, minmax(85px, 95px));
+            }
+            .version-btn {
+                font-size: 1rem;
+                padding: 8px 4px;
+                white-space: nowrap;
+            }
+            .back-home-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .version-btn {
+                font-size: 0.9rem;
+                padding: 7px 2px;
+                min-width: 72px;
+            }
+            .button-grid {
+                gap: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div style="width:100%; display:flex; justify-content:center; align-items:center;">
+    <div class="version-hub">
+        <!-- 所有版本按钮网格（共19个） -->
+        <div class="button-grid" id="versionGrid"></div>
+        <!-- 底部返回主页面按钮 -->
+        <div class="back-home-wrapper">
+            <a href="/" class="back-home-btn">← 返回主页面</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // 定义版本列表（共19个：原17个 + 新增1.5与Beta 1.7.3）
+        const versions = [
+            "1.5",        // 新增
+            "1.6",
+            "1.7",
+            "1.8",
+            "1.9",
+            "1.10",
+            "1.11",
+            "1.12",
+            "1.13",
+            "1.14",
+            "1.15",
+            "1.16",
+            "1.17",
+            "1.18",
+            "1.19",
+            "1.20",
+            "1.21",
+            "26.1",
+            "Beta 1.7.3"  // 超低端设备专属
+        ];
+
+        /**
+         * 根据版本名生成对应的超链接地址
+         * 规则：
+         * - 普通版本 (如 1.6) → m16.html  (去掉点)
+         * - 1.10 → m110.html
+         * - 1.20 → m120.html
+         * - 26.1 → m261.html
+         * - 1.5  → m15.html
+         * - Beta 1.7.3 → beta173.html  (特殊处理)
+         */
+        function getVersionUrl(version) {
+            // 特殊处理 Beta 1.7.3
+            if (version === "Beta 1.7.3") {
+                return "beta173.html";
+            }
+            // 移除点号，得到纯数字标识 (例如 "1.6" -> "16", "1.10" -> "110", "26.1" -> "261")
+            let numStr = version.replace(/\./g, '');
+            // 加入 m 前缀和 .html 扩展名
+            return `m${numStr}.html`;
+        }
+
+        const gridContainer = document.getElementById('versionGrid');
+        if (gridContainer) {
+            versions.forEach(version => {
+                const link = document.createElement('a');
+                link.className = 'version-btn';
+                // 按钮显示文本
+                link.textContent = version;
+                // 设置专属超链接地址
+                link.href = getVersionUrl(version);
+                // 在新标签页打开（保留用户浏览习惯）
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                // 添加鼠标悬停提示
+                link.title = `跳转到 ${link.href}`;
+                gridContainer.appendChild(link);
+            });
+        }
+    })();
+</script>
+</body>
+</html>
